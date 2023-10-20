@@ -1,0 +1,15 @@
+<%= form_with model: [:artists, @album, @song] do |f| %>
+  <%= f.label 'Títle:' %>
+  <%= f.text_field :title %>
+
+  <br>
+  <%= f.label 'Duration:' %>
+  <%= f.text_field  :duration %>
+
+  <br>
+  <br>
+   <%= f.submit 'guardar' %>
+<% end %>
+
+<br>
+<%= link_to 'Volver atrás', artists_albums_path %>

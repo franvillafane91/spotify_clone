@@ -1,0 +1,15 @@
+<%= form_with model: [:artists, @album] do |f| %>
+  <%= f.label 'Título:' %>
+  <%= f.text_field :title, null: false %>
+
+  <br>
+  <%= f.label 'Publicado:' %>
+  <%= f.check_box :published %>
+
+  <br>
+  <br>
+  <%= f.submit 'Enviar' %>
+<% end %>
+
+<br>
+<%= link_to 'Volver atrás', artists_albums_path %>

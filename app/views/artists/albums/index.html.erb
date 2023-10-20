@@ -1,0 +1,32 @@
+<h1>Mis Albumes</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Publicado?</th>
+      <th>Creado el</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.id %></td>
+        <td><%= album.title %></td>
+        <td><%= is_published?(album.published) %></td>
+        <td><%= format_datetime(album.created_at) %></td>
+        <td><%= link_to 'Ver', artists_album_path(album) %></td>
+        <td><%= link_to 'Editar', edit_artists_album_path(album) %></td>
+        <td>
+          <%= link_to 'Borrar', artists_album_path(album),
+            data: { turbo_method: "delete"} %>
+        </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+ 
+ <br>
+
+<%= link_to 'Nuevo Album', new_artists_album_path %>

@@ -1,0 +1,40 @@
+<h1>Album</h1>
+
+<strong>ID:</strong> <%= @album.id %><br>
+<strong>Título:</strong> <%= @album.title %><br>
+<strong>Publicado?:</strong> <%= is_published?(@album.published) %><br><br>
+
+<br>
+<% if @album.songs.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Duracion</th>
+        <th>Creado el</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @album.songs.each do |song| %>
+        <tr>
+          <td><%= song.id %></td>
+          <td><%= song.title %></td>
+          <td><%= song.duration %></td>
+          <td><%= format_datetime(song.created_at) %></td>
+          <td><%= link_to 'Editar', edit_artists_album_song_path(@album, song) %></td>
+        <td>
+          <%= link_to 'Borrar', artists_album_song_path(@album, song),
+            data: { turbo_method: "delete"} %>
+        </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No tiene canciones</p>
+<% end %>
+
+<br>
+<%= link_to 'Volver', artists_albums_path %> |
+<%= link_to 'Agregar Canción', new_artists_album_song_path(@album) %>

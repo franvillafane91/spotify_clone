@@ -2,7 +2,9 @@
 
 <% if current_artist %>
   <p>Hola <%= current_artist.email %></p>
+  <p>Artista creado el <%= format_datetime(current_artist.created_at) %></p>
   <%= button_to 'Cerrar sesión', destroy_artist_session_path, method: :delete, data: { turbo: :false } %>
+  <%= link_to 'Mis albunes', artists_albums_path %>
 <% else %>
   <%= link_to 'Iniciar sesión', new_artist_session_path %> |
   <%= link_to 'Registrarse', new_artist_registration_path %>
