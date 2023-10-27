@@ -8,3 +8,45 @@
   <%= link_to 'Iniciar sesión', new_listener_session_path %>
   <%= link_to 'Registrarse', new_listener_registration_path %>
 <% end %>
+
+<hr>
+<h2>Artistas Globales</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @artists.each do |artist| %>
+    <tr>
+      <td><%= artist.email %></td>
+      <td><i>Seguir</i> | <i>Ver</i></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Mis Artistas</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Los Espiritus</td>
+      <td><i>Seguir</i> | <i>Ver</i></td>
+    </tr>
+    <tr>
+      <td>Usted Señalemelo</td>
+      <td><i>Seguir</i> | <i>Ver</i></td>
+    </tr>
+  </tbody>
+</table>

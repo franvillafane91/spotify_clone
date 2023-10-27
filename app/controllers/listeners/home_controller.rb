@@ -1,5 +1,8 @@
 module Listeners
   class HomeController < ApplicationController
-    def index; end
+
+    def index
+      @artists = Artist.all
+    end
   end
 end
