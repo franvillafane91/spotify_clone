@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :listeners
   devise_for :artists
 
   root to: 'artists/home#index'
@@ -10,5 +11,10 @@ Rails.application.routes.draw do
     resources :albums do
       resources :songs, except: [:index, :show]
     end
+  end
+
+  namespace :listeners do
+    root to: 'home#index'
+    resources :home, only: [:index]
   end
 end

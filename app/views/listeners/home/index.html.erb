@@ -1,0 +1,10 @@
+<h1>Spotify Clone - Bienvenido Oyente</h1>
+
+<% if current_listener %>
+  <p>Hola <%= current_listener.email %></p>
+  <p>Oyente creado el <%= format_datetime(current_listener.created_at) %></p>
+  <%= button_to 'Cerrar sesión', destroy_listener_session_path, method: :delete, data: { turbo: :false } %>
+<% else %>
+  <%= link_to 'Iniciar sesión', new_listener_session_path %>
+  <%= link_to 'Registrarse', new_listener_registration_path %>
+<% end %>
