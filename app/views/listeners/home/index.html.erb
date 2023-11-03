@@ -15,6 +15,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Nombre</th>
       <th>Acciones</th>
     </tr>
@@ -22,8 +23,15 @@
   <tbody>
     <% @artists.each do |artist| %>
     <tr>
+      <td><%= artist.id %></td>
       <td><%= artist.email %></td>
-      <td><i>Seguir</i> | <i>Ver</i></td>
+      <td>
+        <%= form_with url: listeners_followers_path do |f| %>
+          <%= f.hidden_field :artist_id, value: artist.id %>
+
+          <%= f.submit 'Seguir' %>
+        <% end -%> 
+      </td>
     </tr>
     <% end %>
   </tbody>
@@ -35,18 +43,20 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Nombre</th>
       <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Los Espiritus</td>
-      <td><i>Seguir</i> | <i>Ver</i></td>
-    </tr>
-    <tr>
-      <td>Usted Señalemelo</td>
-      <td><i>Seguir</i> | <i>Ver</i></td>
-    </tr>
+    <% @followed_artists.each do |follower| %>
+      <tr>
+        <td><%= follower.id %></td>    
+        <td><%= follower.email %></td>
+        <td>
+           <%= button_to 'dejar de seguir', listeners_follower_path(follower), method: :delete, data: { turbo: :false } %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
