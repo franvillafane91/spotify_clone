@@ -5,7 +5,7 @@ module Listeners
     def create
       current_listener.followers.create(artist_id: params[:artist_id])
 
-      redirect_back(fallback_location: root_path, notice: 'Ahora estás siguiendo a este artista.')
+      redirect_back(fallback_location: root_path)
     end
 
     def destroy

@@ -4,4 +4,6 @@ class Album < ApplicationRecord
   has_many :songs, dependent: :destroy
 
   validates :title, presence: true
+
+  scope :visible_for_public, -> { where(published: true) }
 end
