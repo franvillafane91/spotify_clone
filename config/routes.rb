@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     resources :albums do
       resources :songs, except: [:index, :show]
+      resource :album_covers, only: :show
     end
   end
 

@@ -23,9 +23,9 @@
           <% end %>
         </td>
       <% end -%>
-       
     </tr>
   </h2>
+  <%= link_to 'Descargar tapa', artists_album_album_covers_path(album.id) %>
 
   <h3>Songs</h3>
 
@@ -50,5 +50,6 @@
   <br>
   <br>
 <% end %>
+
 
 <%= link_to 'volver', listener_session_path %>
