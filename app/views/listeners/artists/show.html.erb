@@ -1,0 +1,54 @@
+<h1>Artist:</h1>
+<p style="font-size: 25px;"><%= @artist.email %></p>
+
+
+<p>Visits: <%= @artist.visit_count %></p>
+
+
+<br>
+<br>
+
+<% @albums.each do |album| %>
+  <h2>Álbum: <%= album.title %>=======
+    <%= album.id %>
+    <p>Likes: <%= album.likes.count %></p>
+    <tr>
+      <% if current_listener.likes.find_by(album_id: album.id) %>
+        <td><%= button_to "don't like", listeners_like_path(album), method: :delete, data: { turbo: :false } %></td>
+      <% else %>
+        <td>
+          <%= form_with(url: listeners_likes_path, method: :post) do |f| %>
+            <%= f.hidden_field :album_id, value: album.id %>
+            <%= f.submit 'Like' %>
+          <% end %>
+        </td>
+      <% end -%>
+       
+    </tr>
+  </h2>
+
+  <h3>Songs</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% album.songs.each do |song| %>
+        <tr>
+          <td><%= song.id %></td>
+          <td><%= song.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+<% end %>
+
+<%= link_to 'volver', listener_session_path %>

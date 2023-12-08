@@ -4,4 +4,5 @@ class Listener < ApplicationRecord
 
   has_many :followers
   has_many :artists, through: :followers
+  has_many :likes, dependent: :destroy
 end

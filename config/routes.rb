@@ -16,7 +16,15 @@ Rails.application.routes.draw do
   namespace :listeners do
     root to: 'home#index'
     resources :home, only: [:index]
-    resources :followers, only: [:create, :destroy,]
+    resources :followers, only: [:create, :destroy]
     resources :artists, only: [:show]
+    resources :likes, only: [:create, :destroy]
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :greetings, only: [:index]
+      resources :artists, only: [:index]
+    end
   end
 end
