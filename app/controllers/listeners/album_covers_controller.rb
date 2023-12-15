@@ -3,7 +3,10 @@ module Listeners
     def show
       album = Album.find(params[:id])
       pdf = WickedPdf.new.pdf_from_string(
-        render_to_string(layout: 'pdf', locals: {album: album}, template: 'listeners/album_covers/show')
+        render_to_string(
+          template: 'listeners/album_covers/show',
+          layout: 'pdf',
+          locals: {album: album})
       )
 
       file_name = "album_cover_#{Time.now.to_i}.pdf"
