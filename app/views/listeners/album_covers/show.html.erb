@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+  <title>Album</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -37,9 +37,6 @@
 </head>
 <body>
   <h1>Album</h1>
-
-  <% album = Album.last %>
-
   <h2>Artista: <%= album.artist.email %></h2>
   <h2>Album: <%= album.title %></h2>
   <br>

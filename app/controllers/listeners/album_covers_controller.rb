@@ -1,8 +1,9 @@
 module Listeners
   class AlbumCoversController < ApplicationController
     def show
+      album = Album.find(params[:id])
       pdf = WickedPdf.new.pdf_from_string(
-        render_to_string(layout: 'pdf', template: 'listeners/album_covers/show')
+        render_to_string(layout: 'pdf', locals: {album: album}, template: 'listeners/album_covers/show')
       )
 
       file_name = "album_cover_#{Time.now.to_i}.pdf"

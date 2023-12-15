@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :followers, only: [:create, :destroy]
     resources :artists, only: [:show]
     resources :likes, only: [:create, :destroy]
-    resource :album_covers, only: :show
+    resources :album_covers, only: :show
   end
 
   namespace :api do
