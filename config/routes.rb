@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   namespace :artists do
     resources :home, only: [:index]
+      resources :artist_covers, only: :show
     root to: 'home#index'
 
     resources :albums do

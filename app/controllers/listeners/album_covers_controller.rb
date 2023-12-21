@@ -4,7 +4,7 @@ module Listeners
       album = Album.find(params[:id])
       pdf = WickedPdf.new.pdf_from_string(
         render_to_string(
-          template: 'listeners/album_covers/show',
+          template: 'shared/album_covers/show',
           layout: 'pdf',
           locals: {album: album})
       )
