@@ -1,0 +1,23 @@
+<h1>Album</h1>
+<h2>Artista: <%= album.artist.email %></h2>
+<h2>Album: <%= album.title %></h2>
+<br>
+<br>
+
+<h2>Songs</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% album.songs.each do |song| %>
+      <tr>
+        <td><%= song.id %></td>
+        <td><%= song.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
